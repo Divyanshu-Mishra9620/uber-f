@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  useMap,
-} from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
@@ -43,57 +37,35 @@ const LiveTracking = () => {
 
       const watchId = navigator.geolocation.watchPosition((pos) => {
         setCurrentPosition([pos.coords.latitude, pos.coords.longitude]);
-        console.log("Updated position:", pos.coords.latitude, pos.coords.longitude);
       });
 
       return () => navigator.geolocation.clearWatch(watchId);
     }
   }, []);
 
-
   return (
-  <div className="absolute inset-0 -z-10"> 
-    <MapContainer
-      center={currentPosition}
-      zoom={15}
-      className="h-full w-full"
-    >
-      {/* OpenStreetMap Free Tiles */}
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/">OSM</a>'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
+    <div style={{ position: 'absolute', inset: 0 }}>
+      <MapContainer
+        center={currentPosition}
+        zoom={15}
+        style={{ height: '100%', width: '100%' }}
+        zoomControl={false}
+      >
+        {/* CartoDB Voyager tiles for a cleaner look */}
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>'
+          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+        />
 
-      {/* User/Captain marker */}
-      <Marker position={currentPosition}>
-        <Popup>You are here</Popup>
-      </Marker>
+        {/* User/Captain marker */}
+        <Marker position={currentPosition}>
+          <Popup>You are here</Popup>
+        </Marker>
 
-      <RecenterMap position={currentPosition} />
-    </MapContainer>
-  </div>
-);
-
-//   return (
-//     <MapContainer
-//       center={currentPosition}
-//       zoom={15}
-//       style={{ height: "90vh", width: "100%" }}
-//     >
-//       {/* OpenStreetMap Free Tiles */}
-//       <TileLayer
-//         attribution='&copy; <a href="https://www.openstreetmap.org/">OSM</a>'
-//         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-//       />
-
-//       {/* User/Captain marker */}
-//       <Marker position={currentPosition}>
-//         <Popup>You are here</Popup>
-//       </Marker>
-
-//       <RecenterMap position={currentPosition} />
-//     </MapContainer>
-//   );
+        <RecenterMap position={currentPosition} />
+      </MapContainer>
+    </div>
+  );
 };
 
 export default LiveTracking;

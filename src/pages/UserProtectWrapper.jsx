@@ -23,7 +23,6 @@ const UserProtectWrapper = ({
             }
         }).then(response => {
             if (response.status === 200) {
-                // console.log(response.data.user)
                 setUser(response.data.user)
                 setIsLoading(false)
             }
@@ -37,7 +36,10 @@ const UserProtectWrapper = ({
 
     if (isLoading) {
         return (
-            <div>Loading...</div>
+            <div className="h-screen h-dvh flex flex-col items-center justify-center bg-white">
+                <div className="loading-spinner mb-4" />
+                <p className="text-sm text-gray-500 font-medium">Loading your experience...</p>
+            </div>
         )
     }
 
