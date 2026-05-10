@@ -137,7 +137,7 @@ const Home = () => {
   useGSAP(
     function () {
       gsap.to(confirmRidePanelRef.current, {
-        transform: confirmRidePanel ? "translateY(0)" : "translateY(100%)",
+        y: confirmRidePanel ? "0%" : "100%",
         duration: confirmRidePanel ? 0.45 : 0.35,
         ease: confirmRidePanel ? "power3.out" : "power2.inOut",
       });
@@ -159,7 +159,7 @@ const Home = () => {
   useGSAP(
     function () {
       gsap.to(waitingForDriverRef.current, {
-        transform: waitingForDriver ? "translateY(0)" : "translateY(100%)",
+        y: waitingForDriver ? "0%" : "100%",
         duration: waitingForDriver ? 0.45 : 0.35,
         ease: waitingForDriver ? "power3.out" : "power2.inOut",
       });
@@ -346,7 +346,7 @@ const Home = () => {
       {/* Vehicle Selection Panel */}
       <div
         ref={vehiclePanelRef}
-        style={{ position: 'fixed', width: '100%', maxWidth: '480px', left: '50%', transform: 'translateX(-50%) translateY(100%)', zIndex: 10, padding: '12px 20px 24px', background: '#fff', bottom: 0, borderRadius: '24px 24px 0 0', boxShadow: '0 -2px 8px rgba(0,0,0,0.04), 0 -8px 32px rgba(0,0,0,0.08)', maxHeight: '75vh', overflowY: 'auto' }}
+        className="fixed w-full sm:max-w-md sm:left-1/2 sm:-translate-x-1/2 lg:max-w-lg translate-y-full z-30 px-5 py-6 pt-3 bg-white bottom-0 panel-bottom max-h-[85vh] overflow-y-auto"
       >
         <VehiclePanel fare={fare} setConfirmRidePanel={setConfirmRidePanel} setVehiclePanelOpen={setVehiclePanelOpen} selectVehicle={setVehicleType} />
       </div>
@@ -354,7 +354,7 @@ const Home = () => {
       {/* Confirm Ride Panel */}
       <div
         ref={confirmRidePanelRef}
-        style={{ position: 'fixed', width: '100%', maxWidth: '480px', left: '50%', transform: 'translateX(-50%) translateY(100%)', zIndex: 10, padding: '12px 20px 24px', background: '#fff', bottom: 0, borderRadius: '24px 24px 0 0', boxShadow: '0 -2px 8px rgba(0,0,0,0.04), 0 -8px 32px rgba(0,0,0,0.08)', maxHeight: '85vh', overflowY: 'auto' }}
+        className="fixed w-full sm:max-w-md sm:left-1/2 sm:-translate-x-1/2 lg:max-w-lg translate-y-full z-40 px-5 py-6 pt-3 bg-white bottom-0 panel-bottom max-h-[85vh] overflow-y-auto"
       >
         <ConfirmRide createRide={createRide} pickup={pickup} fare={fare} vehicleType={vehicleType} destination={destination} setConfirmRidePanel={setConfirmRidePanel} setVehicleFound={setVehicleFound} />
       </div>
@@ -362,7 +362,7 @@ const Home = () => {
       {/* Looking for Driver Panel */}
       <div
         ref={vehicleFoundRef}
-        style={{ position: 'fixed', width: '100%', maxWidth: '480px', left: '50%', transform: 'translateX(-50%) translateY(100%)', zIndex: 10, padding: '12px 20px 24px', background: '#fff', bottom: 0, borderRadius: '24px 24px 0 0', boxShadow: '0 -2px 8px rgba(0,0,0,0.04), 0 -8px 32px rgba(0,0,0,0.08)', maxHeight: '85vh', overflowY: 'auto' }}
+        className="fixed w-full sm:max-w-md sm:left-1/2 sm:-translate-x-1/2 lg:max-w-lg translate-y-full z-50 px-5 py-6 pt-3 bg-white bottom-0 panel-bottom max-h-[85vh] overflow-y-auto"
       >
         <LookingForDriver createRide={createRide} pickup={pickup} fare={fare} vehicleType={vehicleType} destination={destination} setVehicleFound={setVehicleFound} />
       </div>
@@ -370,7 +370,7 @@ const Home = () => {
       {/* Waiting for Driver Panel */}
       <div
         ref={waitingForDriverRef}
-        style={{ position: 'fixed', width: '100%', maxWidth: '480px', left: '50%', transform: 'translateX(-50%) translateY(100%)', zIndex: 10, padding: '12px 20px 24px', background: '#fff', bottom: 0, borderRadius: '24px 24px 0 0', boxShadow: '0 -2px 8px rgba(0,0,0,0.04), 0 -8px 32px rgba(0,0,0,0.08)', maxHeight: '85vh', overflowY: 'auto' }}
+        className="fixed w-full sm:max-w-md sm:left-1/2 sm:-translate-x-1/2 lg:max-w-lg translate-y-full z-50 px-5 py-6 pt-3 bg-white bottom-0 panel-bottom max-h-[85vh] overflow-y-auto"
       >
         <WaitingForDriver setWaitingForDriver={setWaitingForDriver} ride={ride} setVehicleFound={setVehicleFound} waitingForDriver={waitingForDriver} />
       </div>

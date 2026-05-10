@@ -119,18 +119,6 @@ const ConfirmRidePopup = (props) => {
             </div>
           )}
 
-          {props.ride?.otp && (
-            <div className="otp-display mb-4">
-              <p className="text-xs text-white/60 uppercase tracking-wider font-medium mb-2">
-                Rider's OTP
-              </p>
-              <p className="otp-digits">{props.ride.otp}</p>
-              <p className="text-xs text-white/50 mt-2">
-                Ask the rider for this code
-              </p>
-            </div>
-          )}
-
           <div className="relative mb-4">
             <i className="ri-key-2-line absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
             <input

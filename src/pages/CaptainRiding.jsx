@@ -15,7 +15,7 @@ const CaptainRiding = () => {
   useGSAP(
     function () {
       gsap.to(finishRidePanelRef.current, {
-        transform: finishRidePanel ? "translateY(0)" : "translateY(100%)",
+        y: finishRidePanel ? "0%" : "100%",
         duration: finishRidePanel ? 0.45 : 0.35,
         ease: finishRidePanel ? "power3.out" : "power2.inOut",
       });
@@ -64,7 +64,7 @@ const CaptainRiding = () => {
       {/* Finish Ride Panel */}
       <div
         ref={finishRidePanelRef}
-        className="fixed h-screen w-full sm:max-w-md sm:left-1/2 sm:-translate-x-1/2 lg:max-w-lg translate-y-full z-30 px-5 py-6 pt-3 bg-white bottom-0 overflow-y-auto"
+        className="fixed w-full sm:max-w-md sm:left-1/2 sm:-translate-x-1/2 lg:max-w-lg translate-y-full z-30 px-5 py-6 pt-3 bg-white bottom-0 panel-bottom max-h-[85vh] overflow-y-auto"
       >
         <FinishRidePopUp ride={rideData} setFinishRidePanel={setFinishRidePanel} />
       </div>

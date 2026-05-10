@@ -65,7 +65,7 @@ const CaptainHome = () => {
   useGSAP(
     function () {
       gsap.to(confirmRidePopupPanelRef.current, {
-        transform: confirmRidePopupPanel ? "translateY(0)" : "translateY(100%)",
+        y: confirmRidePopupPanel ? "0%" : "100%",
         duration: confirmRidePopupPanel ? 0.45 : 0.35,
         ease: confirmRidePopupPanel ? "power3.out" : "power2.inOut",
       });
@@ -120,7 +120,7 @@ const CaptainHome = () => {
       {/* Confirm Ride Popup */}
       <div
         ref={confirmRidePopupPanelRef}
-        className="fixed h-screen w-full sm:max-w-md sm:left-1/2 sm:-translate-x-1/2 lg:max-w-lg translate-y-full z-40 px-5 py-6 pt-3 bg-white bottom-0 overflow-y-auto"
+        className="fixed w-full sm:max-w-md sm:left-1/2 sm:-translate-x-1/2 lg:max-w-lg translate-y-full z-40 px-5 py-6 pt-3 bg-white bottom-0 panel-bottom max-h-[85vh] overflow-y-auto"
       >
         <ConfirmRidePopup ride={ride} setConfirmRidePopupPanel={setConfirmRidePopupPanel} setRidePopupPanel={setRidePopupPanel} />
       </div>
